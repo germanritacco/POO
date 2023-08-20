@@ -4,10 +4,27 @@ public class ListaEnlazada {
 
     private Nodo primero = null;
 
+    public boolean esVacia() {
+        Nodo nodoAux = primero;
+        return primero == null;
+    }
+
+    public Integer longitud() {
+        Integer i = 0;
+        Nodo nodoAux = primero;
+        if (!esVacia()) {
+            while (nodoAux != null) {
+                i++;
+                nodoAux = nodoAux.getProximo();
+            }
+        }
+        return i;
+    }
+
     public void agregar(Object dato) {
         Nodo nuevoNodo = new Nodo();
         nuevoNodo.setDato(dato);
-        if (primero == null) {
+        if (esVacia()) {
             primero = nuevoNodo;
         } else {
             Nodo nodoAux = primero;
@@ -34,4 +51,6 @@ public class ListaEnlazada {
         }
         return acumulador;
     }
+
 }
+
