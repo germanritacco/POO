@@ -6,6 +6,7 @@ public class Nodo {
 
     private Nodo proximo = null;
 
+
     public void setDato(Object dato) {
         this.dato = dato;
     }
@@ -18,7 +19,10 @@ public class Nodo {
         this.proximo = nodo;
     }
 
+
     public Nodo getProximo() {
         return proximo;
     }
+
+
 }

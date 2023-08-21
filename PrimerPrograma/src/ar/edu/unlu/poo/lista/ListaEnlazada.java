@@ -52,5 +52,50 @@ public class ListaEnlazada {
         return acumulador;
     }
 
+    public void borrar(Object dato) {
+        if (esVacia()) {
+            return;
+        }
+        Nodo nodoAux = primero;
+        while (nodoAux != null && nodoAux.getDato() == dato) {
+            primero = nodoAux.getProximo();
+            nodoAux = primero;
+        }
+        while (nodoAux != null && nodoAux.getProximo() != null) {
+            if (nodoAux.getProximo().getDato() == dato) {
+                Nodo temp = nodoAux.getProximo();
+                nodoAux.setProximo(temp.getProximo());
+            } else {
+                nodoAux = nodoAux.getProximo();
+            }
+        }
+
+    }
+
+    public Object recuperar(Integer pos) {
+        int i;
+        Nodo nodoAux = primero;
+        for (i = 0; i < pos - 1; i++) {
+            nodoAux = nodoAux.getProximo();
+        }
+        return nodoAux.getDato();
+    }
+
+    public void insertar(Integer pos, Object dato) {
+        int i;
+        Nodo nodoAux = primero;
+        Nodo nuevo = null;
+        nuevo.setDato(dato);
+        if (pos == 1) {
+            nuevo.setProximo(primero);
+        }
+        for (i = 0; i < pos - 2; i++) {
+            nodoAux = nodoAux.getProximo();
+        }
+        nuevo.setProximo(nodoAux.getProximo());
+        nodoAux.setProximo(nuevo);
+    }
+
 }
+
 
